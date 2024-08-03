@@ -1,9 +1,10 @@
 package com.squad11.squad.config;
 
+import com.squad11.squad.controllers.ControllerExceptionHandler.ResponseException;
 import com.squad11.squad.persistence.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,15 +14,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration()
-@RequiredArgsConstructor
 public class ConfigApp {
 
     private final UserRepository userRepository;
 
+    public ConfigApp(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     // Check the email and password in the database
     @Bean
-    public UserDetailsService userDetailsService(){
-        return username -> userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("Email not found."));
+    public UserDetailsService userDetailsService() {
+        return username -> userRepository.findByEmail(username).orElseThrow(() -> new ResponseException("Email", "Email  not found.", HttpStatus.NOT_FOUND));
     }
 
     // AuthenticationManager use Provider authentication Dao.
@@ -32,7 +36,7 @@ public class ConfigApp {
 
     //he Provider use authentication Dao.
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider dao = new DaoAuthenticationProvider();
         dao.setPasswordEncoder(passwordEncoder());
         dao.setUserDetailsService(userDetailsService());
@@ -40,7 +44,7 @@ public class ConfigApp {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return  new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

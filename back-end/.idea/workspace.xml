@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12ddd936-7cf1-4e9e-b7bb-a929477989c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/main.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/Utils/Dto/Auth/AuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/Utils/Dto/Auth/AuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/ConfigApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/ConfigApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/Jwt/JwtFilterAuthentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/Jwt/JwtFilterAuthentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/controllers/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/controllers/auth/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/controllers/demo/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/controllers/demo/DemoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/persistence/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/persistence/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/squad11/squad/services/auth/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/squad11/squad/services/auth/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -51,15 +49,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.squad [org.springframework.boot:spring-boot-maven-plugin:3.3.2:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop-back&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.squad [org.springframework.boot:spring-boot-maven-plugin:3.3.2:run].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-Maven": "Maven",
+    "Notification.DoNotAsk-Maven": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop-back",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "settings.saveactions"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

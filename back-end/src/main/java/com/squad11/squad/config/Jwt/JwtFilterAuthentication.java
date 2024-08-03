@@ -5,6 +5,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import java.io.IOException;
 
@@ -19,12 +21,14 @@ import java.io.IOException;
 public class JwtFilterAuthentication extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
-    private final  JwtService jwtService;
+    private final JwtService jwtService;
+    private final HandlerExceptionResolver resolver;
 
 
-    public JwtFilterAuthentication(UserDetailsService userDetailsService, JwtService jwtService) {
+    public JwtFilterAuthentication(UserDetailsService userDetailsService, JwtService jwtService, @Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
         this.userDetailsService = userDetailsService;
         this.jwtService = jwtService;
+        this.resolver = resolver;
     }
 
     @Override
@@ -32,40 +36,39 @@ public class JwtFilterAuthentication extends OncePerRequestFilter {
 
         String token = getToken(request);
 
-        if(token == null){
-            filterChain.doFilter(request,response);
+        if (token == null) {
+            filterChain.doFilter(request, response);
             return;
         }
 
         try {
 
-        String email = jwtService.extractJwt(token);
-        if(email !=null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails user = userDetailsService.loadUserByUsername(email);
-            if(jwtService.validateToken(token)){
-              UsernamePasswordAuthenticationToken authenticationToken= new   UsernamePasswordAuthenticationToken(user.getUsername(),null,user.getAuthorities());
-              authenticationToken.setDetails(new WebAuthenticationDetailsSource());
-              SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            String email = jwtService.extractJwt(token);
+            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails user = userDetailsService.loadUserByUsername(email);
+                if (jwtService.validateToken(token)) {
+                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), null, user.getAuthorities());
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource());
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                }
             }
-        }
-        filterChain.doFilter(request,response);
+            filterChain.doFilter(request, response);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             //handler Controller advances.
-            System.out.println(e.getMessage());
+            resolver.resolveException(request, response, null, e);
         }
     }
-
 
 
     private String getToken(HttpServletRequest request) {
-      String header=  request.getHeader("Authorization");
-      if(header == null || !header.startsWith("Bearer ")) return null;
-      return header.replace("Bearer ","");
+        String header = request.getHeader("Authorization");
+        if (header == null || !header.startsWith("Bearer ")) return null;
+        return header.replace("Bearer ", "");
     }
 
 
-    private String getEmail(String token){
+    private String getEmail(String token) {
         return jwtService.extractJwt(token);
     }
 }

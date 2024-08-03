@@ -2,6 +2,7 @@ package com.squad11.squad.controllers.auth;
 
 import com.squad11.squad.Utils.Dto.Auth.AuthRequest;
 import com.squad11.squad.services.auth.UserServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,14 @@ public class AuthController {
     private final UserServiceImpl userService;
 
     @PostMapping("authentication")
-    public ResponseEntity<Map<String,String>> authentication(@RequestBody AuthRequest authRequest){
-        Map<String,String> response =   userService.authentication(authRequest);
-        return  new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<Map<String, String>> authentication(@Valid @RequestBody AuthRequest authRequest) {
+        Map<String, String> response = userService.authentication(authRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-   @PostMapping("register")
-    public ResponseEntity<Map<String,String>> register(@RequestBody AuthRequest authRequest){
-       Map<String,String> response = userService.register(authRequest);
-       return  new ResponseEntity<>(response, HttpStatus.CREATED);
-   }
+    @PostMapping("register")
+    public ResponseEntity<Map<String, String>> register(@Valid @RequestBody AuthRequest authRequest) {
+        Map<String, String> response = userService.register(authRequest);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 }
