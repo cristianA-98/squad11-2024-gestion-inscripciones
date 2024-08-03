@@ -1,0 +1,18 @@
+
+#db config conection
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/prueba
+    username: root
+    password: 123
+
+#Hibernate properties
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+    #create,create-drop,update
+    hibernate:
+      ddl-auto: update
